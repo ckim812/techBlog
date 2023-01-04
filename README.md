@@ -1,6 +1,4 @@
 # techBlog
-14 Model-View-Controller (MVC): Tech Blog
-# TeamProfileGenerator
 
 ## Description
 
@@ -70,10 +68,7 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 ## Usage
 
 ```
-Type "npm i" to install Inquirer and Jest
-Type "node index.js" when you are in the root directory
-Fill in the information required after selecting each prompt
-An HTML file will be created in "./dist"
+
 ```
 
 ## Technologies-Used
