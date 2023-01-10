@@ -4,7 +4,7 @@
   "description": "14 Model-View-Controller (MVC): Tech Blog # TeamProfileGenerator",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js",
+    "test": "node server.js",
     "start": "node server.js",
     "seed": "node seeds/index.js"
   },
