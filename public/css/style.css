@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+
+header {
+  background: #231010;
+  color: white;
+  padding: 10px;
+}
+
+header h1 {
+    background: teal;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px lightgray;
+}
+
+nav {
+    display: flex;
+    justify-content: left;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+}
+
+#signup {
+    width: 80%;
+    margin: 20px auto;
+    border: 2px solid #231010;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#signup h1 {
+    background: #231010;
+    color: white;
+    margin-top: 0;
+}
