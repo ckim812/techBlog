@@ -27,7 +27,9 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({ user: userData, message: "You are now logged in!" });
+      // res.json({ user: userData, message: "You are now logged in!" });
+
+      res.render('dashboard')
     });
   } catch (err) {
     res.status(400).json(err);
@@ -42,6 +44,11 @@ router.post("/logout", (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+router.post("/signup", (req, res) => {
+  console.log(req.body);
+  User.create(req.body).then(data => {res.render("login");});
 });
 
 module.exports = router;
