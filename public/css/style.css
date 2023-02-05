@@ -27,7 +27,7 @@ nav a {
   margin: 10px;
 }
 
-#signup {
+#form {
   width: 80%;
   margin: 20px auto;
   border: 2px solid #231010;
@@ -36,8 +36,31 @@ nav a {
   flex-direction: column;
 }
 
-#signup h1 {
+#form h1 {
   background: #231010;
   color: white;
   margin-top: 0;
+}
+
+#newpostBox {
+  display: flex;
+  justify-content: center;
+}
+
+#newpostBtn {
+  margin: 20px auto;
+  border: 2px solid #231010;
+  padding: 6px;
+  background-color: #231010;
+  color: white;
+  border-radius: 8px;
+}
+
+.inputBox {
+  padding: 5px;
+  margin: 10px;
+}
+
+#contentBox {
+  height: 100px;
 }

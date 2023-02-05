@@ -29,7 +29,7 @@ router.post("/login", async (req, res) => {
 
       // res.json({ user: userData, message: "You are now logged in!" });
 
-      res.render('dashboard')
+      res.render("dashboard");
     });
   } catch (err) {
     res.status(400).json(err);
@@ -48,7 +48,9 @@ router.post("/logout", (req, res) => {
 
 router.post("/signup", (req, res) => {
   console.log(req.body);
-  User.create(req.body).then(data => {res.render("login");});
+  User.create(req.body).then((data) => {
+    res.render("login");
+  });
 });
 
 module.exports = router;

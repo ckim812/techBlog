@@ -47,4 +47,8 @@ router.get("/dashboard", (req, res) => {
   res.render("dashboard");
 });
 
+router.get("/createnewpost", (req, res) => {
+  res.render("createNewPost");
+});
+
 module.exports = router;
