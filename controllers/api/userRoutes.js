@@ -29,17 +29,17 @@ router.post("/login", async (req, res) => {
 
       // res.json({ user: userData, message: "You are now logged in!" });
 
-      res.render("dashboard");
+      res.redirect("/dashboard");
     });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post("/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.redirect("/login");
     });
   } else {
     res.status(404).end();
@@ -49,7 +49,9 @@ router.post("/logout", (req, res) => {
 router.post("/signup", (req, res) => {
   console.log(req.body);
   User.create(req.body).then((data) => {
-    res.render("login");
+    // res.send(<script>alert('New user created!'); window.location.href = '/login';</script>);
+    // res.render("login");
+    res.redirect("/dashboard");
   });
 });
 

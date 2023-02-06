@@ -7,8 +7,10 @@ router.get("/", (req, res) => {
     include: [User],
   }).then((data) => {
     const posts = data.map((post) => post.get({ plain: true }));
-    console.log(data, posts)
-    res.render("homepage", { posts });
+    res.render("homepage", {
+      posts,
+      logged_in: req.session.logged_in,
+    });
   });
 });
 
@@ -19,7 +21,7 @@ router.get("/", withAuth, async (req, res) => {
       order: [["name", "ASC"]],
     });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    const users = userData.map((data) => data.get({ plain: true }));
 
     res.render("homepage", {
       users,
@@ -44,7 +46,12 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
+  Post.findAll({
+    include: [User],
+  }).then((data) => {
+    const posts = data.map((post) => post.get({ plain: true }));
+    res.render("dashboard", { posts, logged_in: req.session.logged_in });
+  });
 });
 
 router.get("/createnewpost", (req, res) => {
