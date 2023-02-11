@@ -27,8 +27,6 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      // res.json({ user: userData, message: "You are now logged in!" });
-
       res.redirect("/dashboard");
     });
   } catch (err) {
@@ -48,10 +46,14 @@ router.get("/logout", (req, res) => {
 
 router.post("/signup", (req, res) => {
   console.log(req.body);
-  User.create(req.body).then((data) => {
+  User.create(req.body).then(userData => {
     // res.send(<script>alert('New user created!'); window.location.href = '/login';</script>);
     // res.render("login");
-    res.redirect("/dashboard");
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.redirect("/dashboard");
+    });
   });
 });
 

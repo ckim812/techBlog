@@ -58,4 +58,13 @@ router.get("/createnewpost", (req, res) => {
   res.render("createNewPost");
 });
 
+router.get("/createnewcomment/:id", (req, res) => {
+  Post.findAll({
+    include: [User],
+  }).then((data) => {
+    const posts = data.map((post) => post.get({ plain: true }));
+    res.render("createNewComment", { posts, logged_in: req.session.logged_in });
+  });
+});
+
 module.exports = router;

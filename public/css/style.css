@@ -42,9 +42,23 @@ nav a {
   margin-top: 0;
 }
 
-#newpostBox {
+.postBox {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 20px;
+  border: 2px solid #231010;
+  padding: 0;
+}
+
+.postTitle {
+  background: #231010;
+  color: white;
+  margin-top: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #newpostBtn {
