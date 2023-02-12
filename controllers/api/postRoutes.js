@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, Comment } = require("../../models");
+const { Post, User, Comment } = require("../../models");
 
 router.post("/createNewPost", (req, res) => {
   req.body.user_id = req.session.user_id;
@@ -21,11 +21,43 @@ router.post("/createNewComment/:id", (req, res) => {
 });
 
 router.get("/updatePost/:id", (req, res) => {
-  console.log("update button works");
+  Post.update(
+    {
+      title: req.query.title,
+      body: req.query.body,
+    },
+    {
+      where: { id: req.params.id },
+    }
+  )
+    .then((updateData) => {
+      if (!updateData) {
+        res.status(404).json({ message: "No data" });
+        return;
+      }
+      res.redirect("/dashboard");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.get("/deletePost/:id", (req, res) => {
-  console.log("delete button works");
+  Post.destroy({
+    where: { id: req.params.id },
+  })
+    .then((data) => {
+      if (!data) {
+        res.status(404).json({ message: "No data" });
+        return;
+      }
+      res.redirect("/dashboard");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;
