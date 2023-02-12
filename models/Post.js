@@ -13,11 +13,6 @@ Post.init(
     },
     title: DataTypes.STRING,
     body: DataTypes.STRING,
-    // created_at: {
-    //   type: "TIMESTAMP",
-    //   defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-    //   allowNull: false,
-    // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -31,7 +26,7 @@ Post.init(
     // timestamps: false,
     // freezeTableName: false,
     // underscored: true,
-    // modelName: "posts",
+    modelName: "posts",
   }
 );
 

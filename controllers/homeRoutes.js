@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Post } = require("../models");
+const { User, Post, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", (req, res) => {
@@ -47,6 +47,7 @@ router.get("/signup", (req, res) => {
 
 router.get("/dashboard", (req, res) => {
   Post.findAll({
+    where: { user_id: req.session.user_id },
     include: [User],
   }).then((data) => {
     const posts = data.map((post) => post.get({ plain: true }));
@@ -55,16 +56,35 @@ router.get("/dashboard", (req, res) => {
 });
 
 router.get("/createnewpost", (req, res) => {
-  res.render("createNewPost");
+  res.render("post");
 });
 
-router.get("/createnewcomment/:id", (req, res) => {
-  Post.findAll({
+router.get("/createnewcomment/:id", async (req, res) => {
+  const postData = await Post.findOne({
+    where: { id: req.params.id },
     include: [User],
-  }).then((data) => {
-    const posts = data.map((post) => post.get({ plain: true }));
-    res.render("createNewComment", { posts, logged_in: req.session.logged_in });
   });
+  const post = postData.get({ plain: true });
+
+  const commentsData = await Comment.findAll({
+    where: { post_id: req.params.id },
+  });
+  // console.log(commentsData);
+  const comments = commentsData.map((comments) =>
+    comments.get({ plain: true })
+  );
+
+  res.render("comment", { post, comments, logged_in: req.session.logged_in });
+});
+
+router.get("/editpost/:id", async (req, res) => {
+  const postData = await Post.findOne({
+    where: { id: req.params.id },
+    include: [User],
+  });
+  const post = postData.get({ plain: true });
+
+  res.render("editpost", { post, logged_in: req.session.logged_in });
 });
 
 module.exports = router;

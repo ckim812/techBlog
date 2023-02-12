@@ -12,7 +12,8 @@ Comment.init(
       autoIncrement: true,
     },
     body: DataTypes.STRING,
-    user_id: {
+    user_name: DataTypes.STRING,
+    post_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "posts",

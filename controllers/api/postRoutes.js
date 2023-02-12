@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post Comment} = require("../../models");
+const { Post, Comment } = require("../../models");
 
 router.post("/createNewPost", (req, res) => {
   req.body.user_id = req.session.user_id;
@@ -10,12 +10,22 @@ router.post("/createNewPost", (req, res) => {
 });
 
 router.post("/createNewComment/:id", (req, res) => {
-  // req.body.user_id = req.session.user_id;
-  let url = window.location.pathname
-  let thisPostID = url.substring(url.lastIndexOf('/')+1);
+  console.log(req.session);
+  req.body.user_name = req.session.user_name;
+  req.body.post_id = req.params.id;
+  console.log(req.body);
+
   Comment.create(req.body).then((data) => {
-    res.redirect("/");
+    res.redirect("back");
   });
+});
+
+router.get("/updatePost/:id", (req, res) => {
+  console.log("update button works");
+});
+
+router.get("/deletePost/:id", (req, res) => {
+  console.log("delete button works");
 });
 
 module.exports = router;
