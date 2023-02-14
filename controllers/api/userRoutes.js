@@ -44,8 +44,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  console.log(req.body);
-  User.create(req.body).then(userData => {
+  User.create(req.body).then((userData) => {
     // res.send(<script>alert('New user created!'); window.location.href = '/login';</script>);
     // res.render("login");
     req.session.save(() => {

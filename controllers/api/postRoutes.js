@@ -10,10 +10,8 @@ router.post("/createNewPost", (req, res) => {
 });
 
 router.post("/createNewComment/:id", (req, res) => {
-  console.log(req.session);
   req.body.user_name = req.session.user_name;
   req.body.post_id = req.params.id;
-  console.log(req.body);
 
   Comment.create(req.body).then((data) => {
     res.redirect("back");
@@ -38,7 +36,6 @@ router.get("/updatePost/:id", (req, res) => {
       res.redirect("/dashboard");
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json(err);
     });
 });
@@ -55,7 +52,6 @@ router.get("/deletePost/:id", (req, res) => {
       res.redirect("/dashboard");
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json(err);
     });
 });
