@@ -40,8 +40,6 @@ router.get("/logout", (req, res) => {
     req.session.destroy(() => {
       res.redirect("/login");
     });
-  } else {
-    res.status(404).end();
   }
 });
 

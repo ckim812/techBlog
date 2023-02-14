@@ -23,7 +23,7 @@
           <a href="/api/users/logout">Logout</a>
         {{else}}
           <a href="/login">Login</a>
-          {{!-- <a href="/signup">Signup</a> --}}
+          {{! <a href="/signup">Signup</a> }}
         {{/if}}
       </nav>
       <h1>The Tech Blog</h1>
@@ -38,7 +38,9 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script src="/js/idleTimeout.js"></script>
+    {{#if logged_in}}
+      <script src="/js/idleTimeout.js"></script>
+    {{/if}}
   </body>
 
 </html>
