@@ -56,19 +56,27 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 
 ## Table of Contents
 
-- [Link to video](#link-to-video)
+- [Link to deployed website](#link-to-deployed-website)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Credits](#credits)
 
-## Link-to-video
+## Link-to-deployed-website
 
-[https://app.castify.com/view/d4e760dd-7e19-49c5-8070-fe3600374768](https://app.castify.com/view/d4e760dd-7e19-49c5-8070-fe3600374768)
+[https://ckim812-techblog.herokuapp.com/](https://ckim812-techblog.herokuapp.com/)
 
 ## Usage
 
 ```
+Press Login to login to site if you have an existing username and password. If not, press "Signup instead" to be redirected to the signup page.
 
+Signup by entering a username and password (8-16 characters) and press submit. You will be redirected to your dashboard.
+
+You can add a post by pressing "+ New Post". After you enter in your title and content, you will be redirected to your dashboard with your new post. You can edit/delete your posts on the dashboard.
+
+If you press Home, you will be able to see posts from all users. You can add comments to posts on the homepage by clicking on the post you want to add a comment to.
+
+On every page, there is an inactivity timer (60 seconds). If you are inactive for more than 60 seconds, you will be logged out and be redirected to the login page.
 ```
 
 ## Technologies-Used
